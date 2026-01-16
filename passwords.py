@@ -1,5 +1,3 @@
-#no extra steps because I couldn't even get the Top Passwords and Word List items to work right...
-
 from pathlib import Path
 
 LOWER = list("abcdefghijklmnopqrstuvwxyz")
@@ -66,7 +64,7 @@ def word_complexity(word) -> int:
     return complexity
 
 
-def password_strength(password, min_length=10, strong_length=16) -> int:
+def password_strength(password, min_length=10, strong_length=15) -> int:
    
     # 1) Dictionary (case-insensitive)
     if word_in_file(password, DICTIONARY_FILE, case_sensitive=False):
@@ -84,7 +82,7 @@ def password_strength(password, min_length=10, strong_length=16) -> int:
         return 1
 
     # 4) Long wins
-    if len(password) >= strong_length:
+    if len(password) > strong_length:
         print("Password is long, length trumps complexity this is a good password.")
         return 5
 
